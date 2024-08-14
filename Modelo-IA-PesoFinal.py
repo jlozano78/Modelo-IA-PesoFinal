@@ -20,6 +20,7 @@ uploaded_file = st.file_uploader("Cargar Archivo CSV" ,type=['csv'])
 
 if uploaded_file is not None:
     try:
+        df = pd.read_csv(uploaded_file)
         categorical_cols = df.select_dtypes(include=['object']).columns
         for col in categorical_cols:
             le = LabelEncoder()
